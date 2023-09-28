@@ -1,0 +1,9 @@
+*.pdf
+
+# Ignore quartus prj files
+/hdl/*.q*
+/hdl/*/
+# Ignore questasim files
+/sim/*/work/
+/sim/*/modelsim*
+/sim/*/*.wlf
