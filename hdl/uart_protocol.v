@@ -3,9 +3,9 @@ module uart_protocol #(
             SIZE_FIFO       = 8,
             BIT_COUNT_SIZE  = $clog2(DATA_SIZE+1),
             SYS_FREQ        = 50000000,
-            BAUD_RATE       = 9600,
+            BAUD_RATE       = 921600,
             CLOCK           = SYS_FREQ/BAUD_RATE,
-            SAMPLE          = 16,
+            SAMPLE          = 32,
             BAUD_DVSR       = SYS_FREQ/(SAMPLE*BAUD_RATE)
   )  (
   input                       clk               ,  // Clock
@@ -112,7 +112,12 @@ always @* begin
 end
 
 // Sampling Clock
-uart_sampling_tick #(SYS_FREQ,BAUD_RATE,CLOCK,SAMPLE,BAUD_DVSR)
+uart_sampling_tick #(
+  .SYS_FREQ   (SYS_FREQ),
+  .BAUD_RATE  (BAUD_RATE),
+  .CLOCK      (CLOCK),
+  .SAMPLE     (SAMPLE),
+  .BAUD_DVSR  (BAUD_DVSR))
 uart_sampling_tick (
   .clk       (clk       ),
   .reset_n   (reset_n   ),

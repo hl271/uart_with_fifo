@@ -54,13 +54,14 @@ initial begin
   reset_n = 1;
   repeat (BAUD_DVSR) @(posedge clk);
   data_in = 11001011;
+  repeat (16*2*BAUD_DVSR) @(negedge clk);
   tx_start = 1;
-  repeat (16*BAUD_DVSR) @(negedge clk);
-  data_in = $random();
-  tx_start = 0;
-  repeat (16*11*BAUD_DVSR) @(negedge clk);
-  tx_start = 1;
-  repeat (16*30*BAUD_DVSR) @(negedge clk);
+  repeat (16*12*BAUD_DVSR) @(negedge clk);
+  // data_in = 00101001;
+  // tx_start = 0;
+  // repeat (16*3*BAUD_DVSR) @(negedge clk);
+  // tx_start = 1;
+  // repeat (16*11*BAUD_DVSR) @(negedge clk);
   $finish;
 
 end
