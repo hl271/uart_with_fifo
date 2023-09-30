@@ -144,6 +144,7 @@ always @* begin
       if (sample_count == 4'd15) begin
         clr_sample_count = 1;
         rx_done = 1;
+        // load_RX_shift_reg = 1;
         next_state = IDLE;
       end
       else begin

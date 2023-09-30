@@ -6,7 +6,7 @@ module uart_sampling_tick #(
     parameter SYS_FREQ  = 50000000,
     parameter BAUD_RATE = 921600,
     parameter CLOCK     = SYS_FREQ/BAUD_RATE,
-    parameter SAMPLE    = 16,
+    parameter SAMPLE    = 32,
     parameter BAUD_DVSR = SYS_FREQ/(SAMPLE*BAUD_RATE) // baud rate divisor
 ) (
     input wire      clk, reset_n,
